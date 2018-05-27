@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	
+</head>
+<body>
+	<div id="root"></div>
+<script>
+		var state;
+		var status;
+		var remaining_guesses;
+		//$(document).ready(function(){
+		/*
+		$.getJSON('http://upe.42069.fun/7fznC', function2(data) {
+        	alert(data);
+		    statee = data.state;
+		    statuss = data.status;
+		    remaining_guessess = data.remaining_guesses;
+		    alert("woohoo");
+		});
+		*/
+		var request = new XMLHttpRequest();
+
+		// Open a new connection, using the GET request on the URL endpoint
+		request.open('GET', 'http://upe.42069.fun/7fznC', true);
+		request.onreadystatechange = function(){
+			if (this.readyState == 4 && this.status == 404){
+				alert("WEW");
+				alert(this.responseText);
+				var data = JSON.parse(this.responseText);
+				state = data.state;
+				status = data.status;
+				remaining_guesses = data.remaining_gueses;
+				alert("STATE" + state);
+				alert(status);
+				alert(remaining_guesses);
+			}
+		}
+		request.send();
+/*
+
+
+		var alreadyusedarray = [];
+		var prevstate;
+
+		var lettertype = 1; //1 if vowel was used last, 0 if consonant was
+
+		var count = 101;
+
+		vowels = "eaoiu";
+		consonants = "tnsrhldcmfpgwybvkxjqz"
+		init_guesses = remaining_guesses;
+		var i, j;
+		var usedmarker = 0;
+		var lettertosend;
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", 'http://upe.42069.fun/7fznC', true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.send(JSON.stringify({
+		    guess :  vowels.charat(0)
+		}));
+
+		alreadyusedarray.push(vowels.charat(0));
+		prevstate = state;
+
+		
+		while(count < 0){
+			while(status == "ALIVE"){
+				request = new XMLHttpRequest();
+				request.open('GET', 'http://upe.42069.fun/7fznC', true);
+				request.onreadystatechange = function(){
+					if (this.readyState == 4){
+						alert("WEW");
+						var data = JSON.parse(this.response);
+						alert(this.response);
+						state = data.state;
+						status = data.status;
+						remaining_guesses = data.remaining_gueses;
+					}
+					
+				}
+				request.send();
+				if(state == prevstate){
+					if(lettertype == 1){
+						lettertype = 0;
+
+						for(i = 0; i < consonants.length; i++){
+							for(j = 0; j < alreadyusedarray.length; j++){
+								if(consonants.charat(i) == alreadyusedarray.charat(j)){
+									usedmarker = 1;
+								}
+							}
+							if(usedmarker  == 1){
+								usedmarker = 0;
+							}
+							else{
+								lettertosend = consonants.charat(i);
+								alreadyusedarray.push(lettertosend);
+								break;
+							}
+						}
+					}
+					else{
+						lettertype = 1;
+
+						for(i = 0; i < vowels.length; i++){
+							for(j = 0; j < alreadyusedarray.length; j++){
+								if(vowels.charat(i) == alreadyusedarray.charat(j)){
+									usedmarker = 1;
+								}
+							}
+							if(usedmarker  == 1){
+								usedmarker = 0;
+							}
+							else{
+								lettertosend = vowels.charat(i);
+								alreadyusedarray.push(lettertosend);
+								break;
+							}
+						}
+					}
+				}
+				else{
+					if(lettertype == 0){
+
+						for(i = 0; i < consonants.length; i++){
+							for(j = 0; j < alreadyusedarray.length; j++){
+								if(consonants.charat(i) == alreadyusedarray.charat(j)){
+									usedmarker = 1;
+								}
+							}
+							if(usedmarker  == 1){
+								usedmarker = 0;
+							}
+							else{
+								lettertosend = consonants.charat(i);
+								alreadyusedarray.push(lettertosend);
+								break;
+							}
+						}
+					}
+					else{
+
+						for(i = 0; i < vowels.length; i++){
+							for(j = 0; j < alreadyusedarray.length; j++){
+								if(vowels.charat(i) == alreadyusedarray.charat(j)){
+									usedmarker = 1;
+								}
+							}
+							if(usedmarker  == 1){
+								usedmarker = 0;
+							}
+							else{
+								lettertosend = vowels.charat(i);
+								alreadyusedarray.push(lettertosend);
+								break;
+							}
+						}
+					}
+				}
+				
+				prevstate = state;
+				xhr = new XMLHttpRequest();
+				xhr.open("POST", 'http://upe.42069.fun/7fznC', true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.send(JSON.stringify({
+				    guess : lettertosend
+				}));
+
+			}
+
+			alreadyusedarray = [];
+			count--;
+			lettertype = 1;
+			prevstate = "";
+		}*/
+	</script>
+</body>
+</html>
